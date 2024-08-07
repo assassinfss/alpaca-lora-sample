@@ -24,10 +24,10 @@ except:  # noqa: E722
 
 
 def main(
-    load_8bit: bool = False,
-    base_model: str = "",
-    lora_weights: str = "tloen/alpaca-lora-7b",
-    prompt_template: str = "",  # The prompt template to use, will default to alpaca.
+    load_8bit: bool = True,
+    base_model: str = "/stores/llm_models/llama/Llama-2-7b-hf",
+    lora_weights: str = "lora-alpaca",
+    prompt_template: str = "alpaca",  # The prompt template to use, will default to alpaca.
     server_name: str = "0.0.0.0",  # Allows to listen on all interfaces by providing '0.
     share_gradio: bool = False,
 ):
@@ -185,7 +185,7 @@ def main(
             gr.components.Checkbox(label="Stream output"),
         ],
         outputs=[
-            gr.inputs.Textbox(
+            gr.components.Textbox(
                 lines=5,
                 label="Output",
             )
@@ -215,4 +215,4 @@ def main(
 
 
 if __name__ == "__main__":
-    fire.Fire(main)
+    main()
